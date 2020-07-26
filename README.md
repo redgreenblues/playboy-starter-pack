@@ -59,7 +59,7 @@ As a user, I want to be able to login to the application.
 
 ### 4. Home Page
 As a user, I want to be able to see all the memes, gifs and puns in this application.
-- Memes, gifs and puns that were created by users will be pushed to the Home Page, as well as their [Personal Profile Page](###6.-personal-profile-page).
+- Memes, gifs and puns that were created by users will be pushed to the Home Page, as well as their [Personal Profile Page](#6.-personal-profile-page).
 
 ### 5. Create Memes/Gifs/Puns Page
 As a user, I want to be able to create new memes, gifs and puns in this application.
