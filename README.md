@@ -41,6 +41,7 @@ description
    - Able to delete a particular post that user created
 5. Dashboard to show all the memes, gifs and puns created by all the users
    - This will show all the latest feed
+   - User will be able to 'like' and 'comment' individual post
 6. React routing for multi-page views
 7. (Bonus): Able to search post
    - Either search by keywords in post's caption or hashtag
