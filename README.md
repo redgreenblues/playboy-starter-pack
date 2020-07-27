@@ -44,7 +44,9 @@ description
    - User will be able to 'like' and 'comment' individual post
 6. React routing for multi-page views
 7. (Bonus): Able to search post
-   - Either search by keywords in post's caption or hashtag
+   - Search by keywords in post's caption
+   - Search by hashtag
+   - Search by theme
 8. (Bonus): Able to search other users
    - After searching, user is able to follow the other user
 
