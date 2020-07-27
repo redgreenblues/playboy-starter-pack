@@ -72,12 +72,12 @@ As a user, I want to be able to login to the application.
 
 ### 4. Dashboard
 As a user, I want to be able to see all the memes, gifs and puns in this application.
-- Memes, gifs and puns that were created by users will be pushed to the Dashboard, as well as their [User Dashboard](#6.-user-dashboard).
+- Memes, gifs and puns that were created by users will be pushed to the Dashboard, as well as their [User Dashboard](#6-user-dashboard).
 
 ### 5. Create Memes/Gifs/Puns Page
 As a user, I want to be able to create new memes, gifs and puns in this application.
 
-### 6. User Dashboard
+### <span id='6-user-dashboard'>6. User Dashboard</span>
 As a user, I want to be able to view all the memes, gifs and puns I have created in my own user dashboard.
 
 ### 7. Edit Memes/Gifs/Puns
