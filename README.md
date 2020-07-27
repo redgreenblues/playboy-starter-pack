@@ -25,6 +25,33 @@ description
 
 ## Introduction
 
+Playboy starter pack is a handy app for young adults both in a single / attached relationship to quickly find a meme / pun / gif to impress or have fun with their female counterpart. There are evidence in our society that young adults are not as shy as previous generation in approaching strangers to express their interest in that person. Dating apps such as Tinder and Coffee & Bagel are popular platforms among young adults to expand their social circle as well as finding their life-long partner to share their lives with. As such "Playboy starter pack" aims to be a library for men to search for the perfect pickup lines to start conversation with their counterpart in a light-hearted romantic way. 
+
+This app also aimed to provide a library to attached couples as well. Partners can dived into the library to find an item to share with each other to enjoy an moment of laugh, cringiness and romanticism. In doing so, a relationship could be injected with some life whenever it gets dull and reignites passions for each other whenever necessary.
+
+Playboy starter pack aims to help spark and maintain relationship among young adults. It is important to note that this app helps to start and spark. the rest is up to individual efforts to bring their love relationship to the next level. 
+
+Playboy starter pack also allows sign up member to add content into the library to hsare with other users. 
+
+## Project Approach
+
+The approach to this project is to have a systematic segregation of database and reduction of nested data to ensure optimize performance in retrieving data. The approach to databases is to have 4 seperate databases (user, meme, pun, gif) with each database connected by a username key value pair. 
+
+The project also aim to achieve as minimum view state as possible to reduce rendering time and optimize data fetching time.
+The project will be split up into 3 main contents, tackled by a single person with a universal methodology to achieve minimum conflict and faster building time.
+
+We aim to approach project in step by step manner
+1) Design landing page
+2) Design data structure ( with a seed data)
+3) Design User login / signup authentication
+4) Design dashboard page (segmented by memes / puns / gif)
+5) Design 1 user dashboard page (segmented by memes / puns / gif)
+6) Design workflow ( CRUD )
+7) Test and troubleshooting
+8) Bonus ( if have time)
+9) Deployment of app
+
+
 ## Main Features
 1. Registration and login
    - Includes authentication and encrypted password
@@ -73,4 +100,24 @@ As a user, I want to be able to edit the memes, gifs and puns that I have create
 
 ### 8. Delete Memes/Gifs/Puns
 As a user, I want to be able to delete the memes, gifs and puns that I have created.
+
+## Technology Used
+
+1) MongoDb / Mongoose
+2) React.js
+3) Apis Used
+ - memes api (https://api.imgflip.com/)
+ - gif api (https://tenor.com/gifapi/documentation#quickstart-search)
+ - puns/jokes api (https://rapidapi.com/webknox/api/jokes?endpoint=55c2a0a7e4b011e6e59410ca)
+4) Other sources
+ - pickup lines generator (http://www.pickuplinegen.com/)
+5) Express.js
+6) Node.js
+7) Multer (uploading img)
+8) Heroku deployment ( for backend )
+9) github pages ( for frontend )
+10) External source
+    - (if any, to be added)
+
+## Methodology
 
