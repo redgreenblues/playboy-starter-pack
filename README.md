@@ -26,8 +26,6 @@ description
 # Project scope
 
 ## Introduction
-Wireframes
-Link - https://wireframepro.mockflow.com/view/Mf0c131ffea6c2e8aa3566cde337dc4031595841263280
 
 Playboy starter pack is a handy app for young adults both in a single / attached relationship to quickly find a meme / pun / gif to impress or have fun with their female counterpart. There are evidence in our society that young adults are not as shy as previous generation in approaching strangers to express their interest in that person. Dating apps such as Tinder and Coffee & Bagel are popular platforms among young adults to expand their social circle as well as finding their life-long partner to share their lives with. As such "Playboy starter pack" aims to be a library for men to search for the perfect pickup lines to start conversation with their counterpart in a light-hearted romantic way. 
 
@@ -93,6 +91,7 @@ We aim to approach project in step by step manner
 13. (Bonus): Additional page to include third party API to get memes, gifs and puns
 
 ## User Journey Map
+
 ### 1. Landing Page
 As a user, I want to know what this application is about when I first land onto this website.
 
@@ -101,6 +100,8 @@ As a user, I want to be able to register a new account.
 
 ### 3. Login Page
 As a user, I want to be able to login to the application.
+
+<img src ="wireframes\log-in wireframe .png" width= "80%">
 
 ### 4. Dashboard
 As a user, I want to be able to see all the memes, gifs and puns in this application.
@@ -118,6 +119,8 @@ As a user, I want to be able to edit the memes, gifs and puns that I have create
 
 ### 8. Delete Memes/Gifs/Puns
 As a user, I want to be able to delete the memes, gifs and puns that I have created.
+
+<img src ="wireframes\landing-page wireframe.png" width= "80%">
 
 
 ## Technology Used
@@ -360,6 +363,35 @@ Added features
 - Music tracks added for individual users
 
 
+## QUESTION
+- FOR CREATE ROUTE, which is easier? to open a create modal view or route to a create page view.
+ans) seperate is easier and clearer. normally modal for something disruptive and depends on user experiences
 
-![Log-in Wireframe](https://imgur.com/a/dEZ7TbS)
-![Landing-page Wireframe](https://imgur.com/a/ccETLJM)
+- Mongo ENUN for database type. 
+
+Feedback. 
+- 
+
+
+const postSchema = new Schema(
+    {
+      username: {
+         type: String,
+         required: true
+      },
+      content: {
+         type: String,
+         required: false,
+         description : 'img.jpeg / img.gif or just a string'
+      },
+      caption: String
+      contentType : {
+         type: String,
+         required : true, 
+         description : ' meme, gif or puns'
+      }
+    {
+        timestamps: true
+    }
+);
+
