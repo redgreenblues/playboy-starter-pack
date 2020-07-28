@@ -26,6 +26,8 @@ description
 # Project scope
 
 ## Introduction
+Wireframes
+Link - https://wireframepro.mockflow.com/view/Mf0c131ffea6c2e8aa3566cde337dc4031595841263280
 
 Playboy starter pack is a handy app for young adults both in a single / attached relationship to quickly find a meme / pun / gif to impress or have fun with their female counterpart. There are evidence in our society that young adults are not as shy as previous generation in approaching strangers to express their interest in that person. Dating apps such as Tinder and Coffee & Bagel are popular platforms among young adults to expand their social circle as well as finding their life-long partner to share their lives with. As such "Playboy starter pack" aims to be a library for men to search for the perfect pickup lines to start conversation with their counterpart in a light-hearted romantic way. 
 
@@ -57,24 +59,37 @@ We aim to approach project in step by step manner
 ## Main Features
 1. Registration and login
    - Includes authentication and encrypted password
-2. Create new post
+2. <span id='2-create-new-post'>Create new post</span>
    - Required fields: Image link
    - Non-required fields: Caption
    - (Bonus): Hashtag function in caption similar to Instagram
-3. Edit post
+3. Create new comment
+   - User is able to add new comment in a particular post
+4. <span id='4-edit-post'>Edit post</span>
    - Able to edit caption of a particular post user created
-   - Able to edit comments made by user
    - User will not be able to edit caption of other user's post
+5. Edit comment
+   - Able to edit comments made by user
    - User will not be able to edit comment made by other user
-4. Delete post
-   - Able to delete a particular post that user created
-5. Dashboard to show all the memes, gifs and puns created by all the users
+6. <span id='6-delete-post'>Delete post</span>
+   - Able to delete a particular post that user created 
+   - User will not be able to delete posts made by other users
+7. Delete comment
+   - Able to delete a particular comment that user commented
+   - User will not be able to delete comments made by other users
+8. Dashboard to show all the memes, gifs and puns created by all the users
    - This will show all the latest feed
-6. React routing for multi-page views
-7. (Bonus): Able to search post
-   - Either search by keywords in post's caption or hashtag
-8. (Bonus): Able to search other users
-   - After searching, user is able to follow the other user
+   - User will be able to 'like' and 'comment' individual post
+9. User dashboard to show all the latest feed posted by a particular user
+   - User will be able to 'like' and 'comment' individual post
+   - User will be able to [Create new post](#2-create-new-post), [Edit post](#4-edit-post) and [Delete post](#6-delete-post)
+10. React routing for multi-page views
+11. (Bonus): Able to search post
+      - Search by keywords in post's caption
+      - Search by hashtag
+      - Search by theme
+12. (Bonus): Able to search other users
+      - After searching, user is able to follow the other user
 
 ## User Journey Map
 ### 1. Landing Page
@@ -86,15 +101,15 @@ As a user, I want to be able to register a new account.
 ### 3. Login Page
 As a user, I want to be able to login to the application.
 
-### 4. Home Page
+### 4. Dashboard
 As a user, I want to be able to see all the memes, gifs and puns in this application.
-- Memes, gifs and puns that were created by users will be pushed to the Home Page, as well as their [Personal Profile Page](#6.-personal-profile-page).
+- Memes, gifs and puns that were created by users will be pushed to the Dashboard, as well as their [User Dashboard](#6-user-dashboard).
 
 ### 5. Create Memes/Gifs/Puns Page
 As a user, I want to be able to create new memes, gifs and puns in this application.
 
-### 6. Personal Profile Page
-As a user, I want to be able to view all the memes, gifs and puns I have created in my own personal profile.
+### <span id='6-user-dashboard'>6. User Dashboard</span>
+As a user, I want to be able to view all the memes, gifs and puns I have created in my own user dashboard.
 
 ### 7. Edit Memes/Gifs/Puns
 As a user, I want to be able to edit the memes, gifs and puns that I have created.
@@ -102,6 +117,7 @@ As a user, I want to be able to edit the memes, gifs and puns that I have create
 
 ### 8. Delete Memes/Gifs/Puns
 As a user, I want to be able to delete the memes, gifs and puns that I have created.
+
 
 ## Technology Used
 
@@ -343,3 +359,6 @@ Added features
 - Music tracks added for individual users
 
 
+
+![Log-in Wireframe](https://imgur.com/a/dEZ7TbS)
+![Landing-page Wireframe](https://imgur.com/a/ccETLJM)
