@@ -1,24 +1,24 @@
 const Content = require('../models/contents-model');
 
 module.exports = {
-    async createMeme(req, res) {
+    async createGif(req, res) {
         const body = req.body
 
         if (!body) {
             return res.status(400).json({
                 success: false,
-                error: 'You must provide a meme'
+                error: 'You must provide a gif'
             })
         }
 
-        const meme = new Content({
+        const gif = new Content({
             username: body.username,
             content: body.content,
             caption: body.caption,
-            contentType: 'Meme'
+            contentType: 'Gif'
         });
 
-        if (!meme) {
+        if (!gif) {
             return res.status(400).json({
                 success: false,
                 error: err
@@ -26,57 +26,57 @@ module.exports = {
         }
 
         try {
-            await meme.save();
+            await gif.save();
             return res.status(201).json({
                 success: true,
-                id: meme._id,
-                message: 'Meme created!'
+                id: gif._id,
+                message: 'Gif created!'
             })
         } catch (err) {
             return res.status(400).json({
                 err,
-                message: 'Meme not created!'
+                message: 'Gif not created!'
             })
         }
     },
-    async getMemes(req, res) {
+    async getGifs(req, res) {
         try {
-            await Content.find({ contentType: 'Meme'}, (err, memes) => {
+            await Content.find({ contentType: 'Gif' }, (err, gifs) => {
                 if (err) {
                     return res.status(400).json({ success: false, error: err })
                 }
 
-                if (!memes.length) {
+                if (!gifs.length) {
                     return res
                         .status(404)
-                        .json({ success: false, error: `Meme not found` })
+                        .json({ success: false, error: `Gif not found` })
                 }
 
-                return res.status(200).json(memes)
+                return res.status(200).json(gifs)
             })
         } catch (err) {
             console.log(err)
         }
     },
-    async getMemeById(req, res) {
+    async getGifById(req, res) {
         try {
-            await Content.findOne({ _id: req.params.id }, (err, meme) => {
+            await Content.findOne({ _id: req.params.id }, (err, gif) => {
                 if (err) {
                     return res.status(400).json({ success: false, error: err })
                 }
     
-                if (!meme) {
+                if (!gif) {
                     return res
                         .status(404)
-                        .json({ success: false, error: `Meme not found` })
+                        .json({ success: false, error: `Gif not found` })
                 }
-                return res.status(200).json(meme)
+                return res.status(200).json(gif)
             })
         } catch (err) {
             console.log(err)
         }
     },
-    updateMeme(req, res) {
+    updateGif(req, res) {
         const body = req.body;
 
         if (!body) {
@@ -86,34 +86,34 @@ module.exports = {
             })
         }
 
-        Content.findOne({ _id: req.params.id }, async (err, meme) => {
+        Content.findOne({ _id: req.params.id }, async (err, gif) => {
             if (err) {
                 return res.status(404).json({
                     err,
-                    message: 'Meme not found!'
+                    message: 'Gif not found!'
                 })
             }
 
-            meme.caption = body.caption;
+            gif.caption = body.caption;
 
             try {
-                await meme.save();
+                await gif.save();
                 return res.status(200).json({
                     success: true,
-                    id: meme._id,
-                    message: 'Meme updated!'
+                    id: gif._id,
+                    message: 'Gif updated!'
                 })
             } catch (err) {
                 return res.status(400).json({
                     err,
-                    message: 'Meme not updated!'
+                    message: 'Gif not updated!'
                 })
             }
         })
     },
-    async deleteMeme(req, res) {
+    async deleteGif(req, res) {
         try {
-            await Content.findOneAndDelete({ _id: req.params.id }, (err, meme) => {
+            await Content.findOneAndDelete({ _id: req.params.id }, (err, gif) => {
                 if (err) {
                     return res.status(400).json({
                         success: false,
@@ -121,16 +121,16 @@ module.exports = {
                     })
                 }
 
-                if (!meme) {
+                if (!gif) {
                     return res.status(404).json({
                         success: false,
-                        error: 'Meme not found'
+                        error: 'Gif not found'
                     })
                 }
 
                 return res.status(200).json({
                     success: true,
-                    data: meme
+                    data: gif
                 })
             })
         } catch (err) {
