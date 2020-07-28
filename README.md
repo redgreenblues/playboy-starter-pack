@@ -132,6 +132,9 @@ Creating content with different specifications.
 - puns - descriptive / strings
 - memes - in https:// url string. 
 
+Fetching data
+- AJAX call to fetch in REACT component. 
+
 
 
 ### data structure (three options)
