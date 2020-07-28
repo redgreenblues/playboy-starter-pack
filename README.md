@@ -89,3 +89,5 @@ As a user, I want to be able to edit the memes, gifs and puns that I have create
 ### 8. Delete Memes/Gifs/Puns
 As a user, I want to be able to delete the memes, gifs and puns that I have created.
 
+![Log-in Wireframe](https://imgur.com/a/dEZ7TbS)
+![Landing-page Wireframe](https://imgur.com/a/ccETLJM)
