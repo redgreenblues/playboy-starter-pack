@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 require('./db');
-const MovieRouter = require('./routes/memesRouter');
+const MemesRouter = require('./routes/memesRouter');
 
 // Middleware
 app.use(express.json());
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 })
 
 // Routes
-app.use('/app', MovieRouter);
+app.use('/app', MemesRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
