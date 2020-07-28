@@ -8,4 +8,6 @@ mongoose.connection
     console.log('Connected to Mongo: ' + MONGODB_URI);
 }).on('error', err => {
     console.log(err.message + ' is Mongo not running?')
-})
+}).on('disconnected', err => {
+    console.log(err.message + ' is Mongo disconnected?')
+});
