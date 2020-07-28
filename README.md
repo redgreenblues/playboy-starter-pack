@@ -94,6 +94,7 @@ We aim to approach project in step by step manner
 
 ## User Journey Map
 <img src ="wireframes\log-in wireframe .png" width= "80%">
+
 ### 1. Landing Page
 As a user, I want to know what this application is about when I first land onto this website.
 
@@ -104,6 +105,7 @@ As a user, I want to be able to register a new account.
 As a user, I want to be able to login to the application.
 
 <img src ="wireframes\landing-page wireframe.png" width= "80%">
+
 ### 4. Dashboard
 As a user, I want to be able to see all the memes, gifs and puns in this application.
 - Memes, gifs and puns that were created by users will be pushed to the Dashboard, as well as their [User Dashboard](#6-user-dashboard).
