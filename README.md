@@ -118,6 +118,8 @@ As a user, I want to be able to edit the memes, gifs and puns that I have create
 ### 8. Delete Memes/Gifs/Puns
 As a user, I want to be able to delete the memes, gifs and puns that I have created.
 
+<img src ="wireframes\log-in wireframe .png" width= "100%">
+<img src ="wireframes\landing-page wireframe.png" width= "100%">
 
 ## Technology Used
 
@@ -357,8 +359,3 @@ Added features
 - Send notification to user email whenever user is being followed and new content is created by their favourite users
 - Search function to search content based on themes. (Using Ajax call query)
 - Music tracks added for individual users
-
-
-
-![Log-in Wireframe](https://imgur.com/a/dEZ7TbS)
-![Landing-page Wireframe](https://imgur.com/a/ccETLJM)
