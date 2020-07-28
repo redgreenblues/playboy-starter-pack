@@ -1,4 +1,4 @@
-const Meme = require('../models/memes-model');
+const Content = require('../models/contents-model');
 
 module.exports = {
     async createdMeme(req, res) {
@@ -7,11 +7,11 @@ module.exports = {
         if (!body) {
             return res.status(400).json({
                 success: false,
-                error: 'You must provide a movie'
+                error: 'You must provide a meme'
             })
         }
 
-        const meme = new Meme({
+        const meme = new Content({
             username: body.username,
             content: body.content,
             caption: body.caption,
@@ -40,7 +40,7 @@ module.exports = {
         }
     },
     async getMemes(req, res) {
-        await Meme.find({}, (err, memes) => {
+        await Content.find({}, (err, memes) => {
             if (err) {
                 return res.status(400).json({ success: false, error: err })
             }
@@ -52,9 +52,20 @@ module.exports = {
             return res.status(200).json({ success: true, data: memes })
         }).catch(err => console.log(err))
     },
-    // getMemeById () {
-
-    // },
+    async getMemeById (req, res) {
+        await Content.findOne({ _id: req.params.id }, (err, meme) => {
+            if (err) {
+                return res.status(400).json({ success: false, error: err })
+            }
+    
+            if (!meme) {
+                return res
+                    .status(404)
+                    .json({ success: false, error: `Meme not found` })
+            }
+            return res.status(200).json({ success: true, data: meme })
+        }).catch(err => console.log(err))
+    },
     // updateMeme () {
 
     // },

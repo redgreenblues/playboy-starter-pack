@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const MemesSchema = new Schema(
+const ContentsSchema = new Schema(
     {
         username: {
             type: String,
@@ -19,6 +19,6 @@ const MemesSchema = new Schema(
     }
 );
 
-const Meme = mongoose.model('memes', MemesSchema);
+const Content = mongoose.model('contents', ContentsSchema);
 
-module.exports = Meme;
+module.exports = Content;
