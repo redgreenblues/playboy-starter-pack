@@ -90,6 +90,7 @@ We aim to approach project in step by step manner
       - Search by theme
 12. (Bonus): Able to search other users
       - After searching, user is able to follow the other user
+13. (Bonus): Additional page to include third party API to get memes, gifs and puns
 
 ## User Journey Map
 ### 1. Landing Page
