@@ -7,11 +7,12 @@ const MemesSchema = new Schema(
             type: String,
             required: true
         },
-        url: {
+        content: String,
+        caption: String,
+        contentType: {
             type: String,
             required: true
-        },
-        caption: String
+        }
     },
     {
         timestamps: true

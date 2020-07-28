@@ -11,7 +11,12 @@ module.exports = {
             })
         }
 
-        const meme = new Meme(body);
+        const meme = new Meme({
+            username: body.username,
+            content: body.content,
+            caption: body.caption,
+            contentType: 'Meme'
+        });
 
         if (!meme) {
             return res.status(400).json({
