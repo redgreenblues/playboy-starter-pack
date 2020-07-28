@@ -16,8 +16,10 @@ description
 - [Introduction](#Introduction)
 - [Project Approach](#project-approach)
 - [Technology Used](#Technology-used)
+- [Methodology Used](#Methodology)
 - [Main Features](#Main-features)
 - [User Journey Map](#User-Journey-Map)
+- [Bonus](#Bonus)
 - [Developer Journey](#Developer-Journey)
 - [Future Development](#Future-Development)
 
@@ -105,19 +107,236 @@ As a user, I want to be able to delete the memes, gifs and puns that I have crea
 
 1) MongoDb / Mongoose
 2) React.js
-3) Apis Used
+3) Authentication services ( session / passport.js)
+4) Express.js
+5) Node.js
+6) Multer (uploading img)
+7) Heroku deployment ( for backend )
+8) github pages ( for frontend )
+9) Apis Used (IF NECESSARY AND FOR BONUS)
  - memes api (https://api.imgflip.com/)
  - gif api (https://tenor.com/gifapi/documentation#quickstart-search)
  - puns/jokes api (https://rapidapi.com/webknox/api/jokes?endpoint=55c2a0a7e4b011e6e59410ca)
-4) Other sources
- - pickup lines generator (http://www.pickuplinegen.com/)
-5) Express.js
-6) Node.js
-7) Multer (uploading img)
-8) Heroku deployment ( for backend )
-9) github pages ( for frontend )
-10) External source
+10) AJAX
+11) JQUERY
+12) MDBREACT CSS
+13) BOOTSTRAP 
+14) External source
     - (if any, to be added)
 
 ## Methodology
+
+### On CRUD
+Creating content with different specifications. 
+- Gif - Need to upload a image in .gif format in gif section
+- puns - descriptive / strings
+- memes - in https:// url string. 
+
+
+
+### data structure (three options)
+- Below schema is only one out of the three options. 
+
+Option 1
+<img src ="wireframes/datastructure.PNG" width= "100%">
+option 2
+<img src ="wireframes/datastructure2.PNG" width= "100%">
+option 3
+<img src ="wireframes/datastructure3.PNG" width= "100%">
+
+1) segregated collections (option 1)
+- user collection (user's schema)
+    ```
+    {
+      $jsonSchema: {
+         bsonType: 'object',
+         required:['username','email','password'],
+         properties: {
+               username: {
+               bsonType: 'string'
+               },
+               proImg: {
+               bsonType: 'string',
+               description : 'url string starting from https'
+               },
+               biography : {
+               bsonType: 'string'
+               }
+               email: {
+               bsonType: 'string'
+               },
+               password: {
+               bsonType: 'string'
+               },
+               createdAt: {
+               bsonType: 'date'
+               },
+               lastLoggedInAt: {
+               bsonType: 'date'
+               }
+         }
+      }
+    }
+    ```
+- memes collection (memes's schema)
+    ```
+   {
+      $jsonSchema: {
+         bsonType: 'object',
+         required:['username'],
+         properties: {
+            username: {
+            bsonType: 'string'
+            },
+            memes: {
+            bsonType: 'array',
+            uniqueItems: true,
+            description : 'collection of memes created by user',
+               items : {
+                  bsonType: 'object',
+                  required : ['memeId','createdBy', 'createdAt']
+                  properties: {
+                     memeId : {
+                        bsonType : ObjectId,
+                        },
+                     memeImg : {
+                        bsonType : 'string',
+                        description : 'it must be in https'
+                        },
+                     description : {
+                        bsonType : 'string',
+                        },
+                     createdBy : {
+                        bsonType : 'string'
+                        },
+                     createdAt : {
+                        bsonType : 'string'
+                        },
+                     tags: {
+                        bsonType : 'array',
+                        uniqueItems : true,
+                        items : {
+                           bsonType : 'string'
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+    }
+    ```
+
+- gifs collection (gif's schema)
+    ```
+   {
+      $jsonSchema: {
+         bsonType: 'object',
+         required:['username'],
+         properties: {
+            username: {
+            bsonType: 'string'
+            },
+            gifs: {
+            bsonType: 'array',
+            uniqueItems: true,
+            description : 'collection of gifs created by user',
+               items : {
+                  bsonType: 'object',
+                  required : ['gifId','createdBy', 'createdAt']
+                  properties: {
+                     gifId : {
+                        bsonType : ObjectId,
+                        },
+                     gifImg : {
+                        bsonType : 'string',
+                        description : 'it must be in https and .gif format'
+                        },
+                     description : {
+                        bsonType : 'string',
+                        },
+                     createdBy : {
+                        bsonType : 'string'
+                        },
+                     createdAt : {
+                        bsonType : 'string'
+                        },
+                     tags: {
+                        bsonType : 'array',
+                        uniqueItems : true,
+                        items : {
+                           bsonType : 'string'
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+    }
+    ```
+
+- puns collection (gif's schema)
+    ```
+   {
+      $jsonSchema: {
+         bsonType: 'object',
+         required:['username'],
+         properties: {
+            username: {
+            bsonType: 'string'
+            },
+            gifs: {
+            bsonType: 'array',
+            uniqueItems: true,
+            description : 'collection of pun created by user',
+               items : {
+                  bsonType: 'object',
+                  required : ['punId','createdBy', 'createdAt']
+                  properties: {
+                     punId : {
+                        bsonType : ObjectId,
+                        },
+                     punImg : {
+                        bsonType : 'string',
+                        description : 'Optional, not required. Image to discribe the pun'
+                        },
+                     description : {
+                        bsonType : 'string',
+                        },
+                     createdBy : {
+                        bsonType : 'string'
+                        },
+                     createdAt : {
+                        bsonType : 'string'
+                        },
+                     tags: {
+                        bsonType : 'array',
+                        uniqueItems : true,
+                        items : {
+                           bsonType : 'string'
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+    }
+    ```
+
+
+## Bonus
+(if have time)
+Added features
+- A quick button to generate random pickup lines / memes / puns / gif
+- Update / Edit User profile
+- User can follow and being followed by other users
+- Send notification to user email whenever user is being followed and new content is created by their favourite users
+- Search function to search content based on themes. (Using Ajax call query)
+- Music tracks added for individual users
+
 
