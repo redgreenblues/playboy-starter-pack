@@ -1,21 +1,19 @@
+// Dependencies
 const express = require('express');
-const PORT = process.env.PORT || 3000;
+const app = express();
 const cors = require('cors');
 
-const app = express();
+// Environment Variables
+const PORT = process.env.PORT || 3000;
+
+// Imports
 require('./db');
-const MemesRouter = require('./routes/memesRouter');
-const GifsRouter = require('./routes/gifsRouter');
-const PunsRouter = require('./routes/punsRouter');
+const { MemesRouter, GifsRouter, PunsRouter } = require('./routes');
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
 
 // Routes
 app.use('/app', MemesRouter, GifsRouter, PunsRouter);
