@@ -361,3 +361,37 @@ Added features
 - Send notification to user email whenever user is being followed and new content is created by their favourite users
 - Search function to search content based on themes. (Using Ajax call query)
 - Music tracks added for individual users
+
+
+## QUESTION
+- FOR CREATE ROUTE, which is easier? to open a create modal view or route to a create page view.
+ans) seperate is easier and clearer. normally modal for something disruptive and depends on user experiences
+
+- Mongo ENUN for database type. 
+
+Feedback. 
+- 
+
+
+const postSchema = new Schema(
+    {
+      username: {
+         type: String,
+         required: true
+      },
+      content: {
+         type: String,
+         required: false,
+         description : 'img.jpeg / img.gif or just a string'
+      },
+      caption: String
+      contentType : {
+         type: String,
+         required : true, 
+         description : ' meme, gif or puns'
+      }
+    {
+        timestamps: true
+    }
+);
+

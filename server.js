@@ -1,7 +1,7 @@
-// Imports
+// Dependencies
 
 const express = require('express');
-const PORT = process.env.PORT || 3000;
+const app = express();
 const cors = require('cors');
 const mongoose = require("mongoose");
 const passport = require("passport");
@@ -27,11 +27,19 @@ mongoose.connect(
 
 
 
-const app = express();
+// Environment Variables
+const PORT = process.env.PORT || 3000;
+
+// Imports
 require('./db');
 
 
+// =======
+// const { MemesRouter, GifsRouter, PunsRouter } = require('./routes');
+
+
 // Middleware
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -93,6 +101,10 @@ app.post("/login", (req, res, next) => {
     res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it. 
     //can be used for the rest of the app
   });
+=======
+// // Routes
+// app.use('/app', MemesRouter, GifsRouter, PunsRouter);
+
 
 // Start Server
 app.listen(PORT, () => {

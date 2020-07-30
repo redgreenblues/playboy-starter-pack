@@ -1,24 +1,24 @@
 const Content = require('../models/contents-model');
 
 module.exports = {
-    async createMeme(req, res) {
+    async createPun(req, res) {
         const body = req.body
 
         if (!body) {
             return res.status(400).json({
                 success: false,
-                error: 'You must provide a meme'
+                error: 'You must provide a Pun'
             })
         }
 
-        const meme = new Content({
+        const pun = new Content({
             username: body.username,
             content: body.content,
             caption: body.caption,
-            contentType: 'Meme'
+            contentType: 'Pun'
         });
 
-        if (!meme) {
+        if (!pun) {
             return res.status(400).json({
                 success: false,
                 error: err
@@ -26,57 +26,57 @@ module.exports = {
         }
 
         try {
-            await meme.save();
+            await pun.save();
             return res.status(201).json({
                 success: true,
-                id: meme._id,
-                message: 'Meme created!'
+                id: pun._id,
+                message: 'Pun created!'
             })
         } catch (err) {
             return res.status(400).json({
                 err,
-                message: 'Meme not created!'
+                message: 'Pun not created!'
             })
         }
     },
-    async getMemes(req, res) {
+    async getPuns(req, res) {
         try {
-            await Content.find({ contentType: 'Meme'}, (err, memes) => {
+            await Content.find({ contentType: 'Pun' }, (err, puns) => {
                 if (err) {
                     return res.status(400).json({ success: false, error: err })
                 }
 
-                if (!memes.length) {
+                if (!puns.length) {
                     return res
                         .status(404)
-                        .json({ success: false, error: `Meme not found` })
+                        .json({ success: false, error: `Pun not found` })
                 }
 
-                return res.status(200).json(memes)
+                return res.status(200).json(puns)
             })
         } catch (err) {
             console.log(err)
         }
     },
-    async getMemeById(req, res) {
+    async getPunById(req, res) {
         try {
-            await Content.findOne({ _id: req.params.id }, (err, meme) => {
+            await Content.findOne({ _id: req.params.id }, (err, pun) => {
                 if (err) {
                     return res.status(400).json({ success: false, error: err })
                 }
     
-                if (!meme) {
+                if (!pun) {
                     return res
                         .status(404)
-                        .json({ success: false, error: `Meme not found` })
+                        .json({ success: false, error: `Pun not found` })
                 }
-                return res.status(200).json(meme)
+                return res.status(200).json(pun)
             })
         } catch (err) {
             console.log(err)
         }
     },
-    updateMeme(req, res) {
+    updatePun(req, res) {
         const body = req.body;
 
         if (!body) {
@@ -86,34 +86,34 @@ module.exports = {
             })
         }
 
-        Content.findOne({ _id: req.params.id }, async (err, meme) => {
+        Content.findOne({ _id: req.params.id }, async (err, pun) => {
             if (err) {
                 return res.status(404).json({
                     err,
-                    message: 'Meme not found!'
+                    message: 'Pun not found!'
                 })
             }
 
-            meme.caption = body.caption;
+            pun.caption = body.caption;
 
             try {
-                await meme.save();
+                await pun.save();
                 return res.status(200).json({
                     success: true,
-                    id: meme._id,
-                    message: 'Meme updated!'
+                    id: pun._id,
+                    message: 'Pun updated!'
                 })
             } catch (err) {
                 return res.status(400).json({
                     err,
-                    message: 'Meme not updated!'
+                    message: 'Pun not updated!'
                 })
             }
         })
     },
-    async deleteMeme(req, res) {
+    async deletePun(req, res) {
         try {
-            await Content.findOneAndDelete({ _id: req.params.id }, (err, meme) => {
+            await Content.findOneAndDelete({ _id: req.params.id }, (err, pun) => {
                 if (err) {
                     return res.status(400).json({
                         success: false,
@@ -121,16 +121,16 @@ module.exports = {
                     })
                 }
 
-                if (!meme) {
+                if (!pun) {
                     return res.status(404).json({
                         success: false,
-                        error: 'Meme not found'
+                        error: 'Pun not found'
                     })
                 }
 
                 return res.status(200).json({
                     success: true,
-                    data: meme
+                    data: pun
                 })
             })
         } catch (err) {
