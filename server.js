@@ -9,7 +9,6 @@ const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
-const User = require('../models/user');
 
 const app = express();
 
@@ -36,9 +35,6 @@ app.use(
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-require("../controllers/usersController")(passport);
-
-
 
 // Imports
 require('./db');
