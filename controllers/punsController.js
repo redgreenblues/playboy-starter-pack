@@ -12,7 +12,7 @@ module.exports = {
         }
 
         const pun = new Content({
-            username: body.username,
+            username: req.user.username,
             content: body.content,
             caption: body.caption,
             contentType: 'Pun'

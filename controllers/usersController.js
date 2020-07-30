@@ -1,34 +1,46 @@
-const User = require("./models/user");
+const passport = require("passport");
 const bcrypt = require("bcryptjs");
-const localStrategy = require("passport-local").Strategy;
 
-module.exports = function (passport) {
-  passport.use(
-    new localStrategy((username, password, done) => {
-      User.findOne({ username: username }, (err, user) => {
-        if (err) throw err;
-        if (!user) return done(null, false);
-        bcrypt.compare(password, user.password, (err, result) => {
+require('../config/user')(passport);
+const User = require('../models/user-model');
+
+module.exports = {
+  login(req, res, next) {
+    passport.authenticate("local", (err, user, info) => {
+      if (err) throw err;
+      if (!user) res.send("No User Exists");
+      else {
+        req.logIn(user, (err) => {
           if (err) throw err;
-          if (result === true) {
-            return done(null, user);
-          } else {
-            return done(null, false);
-          }
+          res.send("Successfully Authenticated");
         });
-      });
-    })
-  );
+      }
+    })(req, res, next);
+  },
+  register(req, res) {
+    User.findOne({ username: req.body.username }, async (err, doc) => {
+      if (err) throw err;
+      if (doc) res.send("User Already Exists");
+      if (!doc) {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-  passport.serializeUser((user, cb) => {
-    cb(null, user.id);
-  });
-  passport.deserializeUser((id, cb) => {
-    User.findOne({ _id: id }, (err, user) => {
-      const userInformation = {
-        username: user.username,
-      };
-      cb(err, userInformation);
+        const newUser = new User({
+          username: req.body.username,
+          email: req.body.email,
+          profileImg: req.body.profileImg,
+          password: hashedPassword,
+        });
+        await newUser.save();
+        res.send("User Created");
+      }
     });
-  });
-};
+  },
+  getUser(req, res) {
+    res.send(req.user) // The req.user stores the entire user that has been authenticated inside of it. 
+    //can be used for the rest of the app
+  },
+  logout(req, res) {
+    req.logout();
+    res.redirect('/');
+  },
+}

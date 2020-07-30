@@ -1,8 +1,8 @@
 const express = require('express');
+const router = express.Router();
 
 const MemesController = require('../controllers/memesController');
 
-const router = express.Router();
 
 router.post('/meme', MemesController.createMeme);
 router.get('/memes', MemesController.getMemes);

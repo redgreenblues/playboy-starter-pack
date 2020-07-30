@@ -12,7 +12,7 @@ module.exports = {
         }
 
         const gif = new Content({
-            username: body.username,
+            username: req.user.username,
             content: body.content,
             caption: body.caption,
             contentType: 'Gif'

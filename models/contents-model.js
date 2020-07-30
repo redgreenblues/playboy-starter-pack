@@ -27,6 +27,6 @@ const ContentsSchema = new Schema(
     }
 );
 
-const Content = mongoose.model('contents', ContentsSchema);
+const Content = mongoose.model('Contents', ContentsSchema);
 
 module.exports = Content;

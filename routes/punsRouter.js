@@ -1,8 +1,7 @@
 const express = require('express');
+const router = express.Router();
 
 const PunsController = require('../controllers/punsController');
-
-const router = express.Router();
 
 router.post('/pun', PunsController.createPun);
 router.get('/puns', PunsController.getPuns);
