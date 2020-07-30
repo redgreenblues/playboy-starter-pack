@@ -4,13 +4,15 @@ const express = require('express');
 const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 const passport = require("passport");
-const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
-const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 
 const app = express();
+
+// Imports
+require('./db');
+const { MemesRouter, GifsRouter, PunsRouter, UsersRouter } = require('./routes');
 
 // Middleware
 
@@ -22,7 +24,6 @@ app.use(
     credentials: true,
   })
 );
-
 
 app.use(
   session({
@@ -36,12 +37,8 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Imports
-require('./db');
-const { MemesRouter, GifsRouter, PunsRouter, usersRouter } = require('./routes');
-
 // Routes
-app.use('/app', MemesRouter, GifsRouter, PunsRouter, usersRouter);
+app.use('/app', MemesRouter, GifsRouter, PunsRouter, UsersRouter);
 
 
 // Start Server

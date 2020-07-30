@@ -1,8 +1,8 @@
 const express = require('express');
+const router = express.Router();
 
 const GifsController = require('../controllers/gifsController');
 
-const router = express.Router();
 
 router.post('/gif', GifsController.createGif);
 router.get('/gifs', GifsController.getGifs);
