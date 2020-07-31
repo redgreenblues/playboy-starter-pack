@@ -22,16 +22,20 @@ module.exports = {
       if (err) throw err;
       if (doc) res.send("User Already Exists");
       if (!doc) {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        try {
+          const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-        const newUser = new User({
-          username: req.body.username,
-          email: req.body.email,
-          profileImg: req.body.profileImg,
-          password: hashedPassword,
-        });
-        await newUser.save();
-        res.send("User Created");
+          const newUser = new User({
+            username: req.body.username,
+            email: req.body.email,
+            profileImg: req.body.profileImg,
+            password: hashedPassword,
+          });
+          await newUser.save();
+          res.send('User created!');
+        } catch (err) {
+          console.log(err)
+        }      
       }
     });
   },
