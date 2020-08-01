@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const { ensureAuthenticated } = require('../config/auth');
 
 const MemesController = require('../controllers/memesController');
 
 
-router.post('/meme', MemesController.createMeme);
-router.get('/memes', MemesController.getMemes);
-router.get('/meme/:id', MemesController.getMemeById);
-router.put('/meme/:id', MemesController.updateMeme);
-router.delete('/meme/:id', MemesController.deleteMeme);
+router.post('/meme', ensureAuthenticated, MemesController.createMeme);
+router.get('/memes', ensureAuthenticated, MemesController.getMemes);
+router.get('/meme/:id', ensureAuthenticated, MemesController.getMemeById);
+router.put('/meme/:id', ensureAuthenticated, MemesController.updateMeme);
+router.delete('/meme/:id', ensureAuthenticated, MemesController.deleteMeme);
 
 module.exports = router;
