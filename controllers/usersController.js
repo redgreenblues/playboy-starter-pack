@@ -45,6 +45,6 @@ module.exports = {
   },
   logout(req, res) {
     req.logout();
-    res.redirect('/');
+    res.status(200).send('User logged out!')
   },
 }
