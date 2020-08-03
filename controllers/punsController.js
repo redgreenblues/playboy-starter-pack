@@ -78,7 +78,7 @@ module.exports = {
     },
     async getPunsByUsername(req, res) {
         try {
-            await Content.findOne({ username: req.params.username, contentType: 'Pun' }, (err, pun) => {
+            await Content.find({ username: req.params.username, contentType: 'Pun' }, (err, pun) => {
                 if (err) {
                     return res.status(400).json({ success: false, error: err })
                 }
