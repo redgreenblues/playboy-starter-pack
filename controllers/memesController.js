@@ -76,6 +76,24 @@ module.exports = {
             console.log(err)
         }
     },
+    async getMemesByUsername(req, res) {
+        try {
+            await Content.find({ username: req.params.username, contentType: 'Meme' }, (err, meme) => {
+                if (err) {
+                    return res.status(400).json({ success: false, error: err })
+                }
+    
+                if (!meme) {
+                    return res
+                        .status(404)
+                        .json({ success: false, error: `Meme not found` })
+                }
+                return res.status(200).json(meme)
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    },
     updateMeme(req, res) {
         const body = req.body;
 

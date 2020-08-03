@@ -76,6 +76,24 @@ module.exports = {
             console.log(err)
         }
     },
+    async getGifsByUsername(req, res) {
+        try {
+            await Content.find({ username: req.params.username, contentType: 'Gif' }, (err, gif) => {
+                if (err) {
+                    return res.status(400).json({ success: false, error: err })
+                }
+    
+                if (!gif) {
+                    return res
+                        .status(404)
+                        .json({ success: false, error: `Gif not found` })
+                }
+                return res.status(200).json(gif)
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    },
     updateGif(req, res) {
         const body = req.body;
 
