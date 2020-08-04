@@ -76,6 +76,24 @@ module.exports = {
             console.log(err)
         }
     },
+    async getPunsByUsername(req, res) {
+        try {
+            await Content.find({ username: req.params.username, contentType: 'Pun' }, (err, pun) => {
+                if (err) {
+                    return res.status(400).json({ success: false, error: err })
+                }
+    
+                if (!pun) {
+                    return res
+                        .status(404)
+                        .json({ success: false, error: `Pun not found` })
+                }
+                return res.status(200).json(pun)
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    },
     updatePun(req, res) {
         const body = req.body;
 

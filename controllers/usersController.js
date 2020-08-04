@@ -29,6 +29,7 @@ module.exports = {
             username: req.body.username,
             email: req.body.email,
             profileImg: req.body.profileImg,
+            profileBio: req.body.profileBio,
             password: hashedPassword,
           });
           await newUser.save();
@@ -45,6 +46,6 @@ module.exports = {
   },
   logout(req, res) {
     req.logout();
-    res.redirect('/');
+    res.status(200).send('User logged out!')
   },
 }
