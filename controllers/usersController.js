@@ -29,6 +29,7 @@ module.exports = {
             username: req.body.username,
             email: req.body.email,
             profileImg: req.body.profileImg,
+            profileBio: req.body.profileBio,
             password: hashedPassword,
           });
           await newUser.save();
