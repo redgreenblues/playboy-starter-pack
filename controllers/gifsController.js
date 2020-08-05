@@ -113,6 +113,7 @@ module.exports = {
             }
 
             gif.caption = body.caption;
+            gif.likes = body.likes;
 
             try {
                 await gif.save();
