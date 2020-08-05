@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs");
 
 require('../config/user')(passport);
 const User = require('../models/user-model');
+const user = require("../config/user");
+const bodyParser = require("body-parser");
 
 module.exports = {
   login(req, res, next) {
@@ -36,7 +38,7 @@ module.exports = {
           res.status(201).send('User created!');
         } catch (err) {
           console.log(err)
-        }      
+        }
       }
     });
   },
@@ -48,4 +50,47 @@ module.exports = {
     req.logout();
     res.status(200).send('User logged out!')
   },
+  
+  updateUser(req, res) {
+    const body = req.body;
+    if (!body) {
+      return res.status(400).json({
+        success: false,
+        error: 'You must provide a body to update'
+      })
+    }
+
+    User.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        username: body.username, /// Updates to be made from the payload
+        profileBio: body.profileBio,
+        profileImg: body.profileImg
+      },
+      {
+        returnOriginal: false /// returns newly updated data
+      },
+      async (err, result) => { /// callback function
+        if (err) {
+          return res.status(404).json({
+            err,
+            message: 'User not found!'
+          })
+        }
+        
+        try {
+          await result.save();
+          return res.status(200).json({
+            success: true,
+            id: result._id,
+            message: 'User updated!'
+          })
+        } catch (err) {
+          return res.status(400).json({
+            err,
+            message: 'User not updated!'
+          })
+        }
+      })
+  }
 }
