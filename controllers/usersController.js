@@ -62,20 +62,21 @@ module.exports = {
     User.findOneAndUpdate(
       { _id: req.params.id },
       {
-        username: body.username, /// Updates to be made
+        username: body.username, /// Updates to be made from the payload
         profileBio: body.profileBio,
         profileImg: body.profileImg
       },
       {
         returnOriginal: false /// returns newly updated data
       },
-      async (err, pun) => { /// callback function
+      async (err, result) => { /// callback function
         if (err) {
           return res.status(404).json({
             err,
             message: 'User not found!'
           })
         }
+        
         try {
           await result.save();
           return res.status(200).json({
