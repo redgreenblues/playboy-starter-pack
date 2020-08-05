@@ -50,6 +50,7 @@ module.exports = {
     req.logout();
     res.status(200).send('User logged out!')
   },
+  
   updateUser(req, res) {
     const body = req.body;
     if (!body) {
