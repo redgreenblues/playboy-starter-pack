@@ -16,7 +16,10 @@ const ContentsSchema = new Schema(
         content: String,
         caption: String,
         comments: [subCommentSchema],
-        likes: Number,
+        likes: {
+            type: Number,
+            default: 0
+        },
         hashtag: [String],
         contentType: {
             type: String,
