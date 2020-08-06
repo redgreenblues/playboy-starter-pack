@@ -113,6 +113,7 @@ module.exports = {
             }
 
             meme.caption = body.caption;
+            meme.likes = body.likes;
 
             try {
                 await meme.save();
