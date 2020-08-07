@@ -14,7 +14,10 @@ const ContentsSchema = new Schema(
             required: true
         },
         content: String,
-        caption: String,
+        caption: {
+            type: String,
+            default: ''
+        },
         comments: [subCommentSchema],
         likes: {
             type: Number,
