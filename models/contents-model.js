@@ -23,7 +23,10 @@ const ContentsSchema = new Schema(
             type: Number,
             default: 0
         },
-        hashtag: [String],
+        hashtag: [{
+            type: String,
+            default: ''
+        }],
         contentType: {
             type: String,
             required: true
