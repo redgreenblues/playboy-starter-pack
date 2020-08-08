@@ -20,7 +20,7 @@ module.exports = {
     })(req, res, next);
   },
   register(req, res) {
-    User.findOne({ username: req.body.username }, async (err, doc) => {
+    User.find({ username: req.body.username, email: req.body.email }, async (err, doc) => {
       if (err) throw err;
       if (doc) res.status(400).send("User Already Exists");
       if (!doc) {
