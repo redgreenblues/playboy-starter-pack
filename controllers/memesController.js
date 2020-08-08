@@ -103,7 +103,6 @@ module.exports = {
                 error: 'You must provide a body to update'
             })
         }
-
         Content.findOne({ _id: req.params.id }, async (err, meme) => {
             if (err) {
                 return res.status(404).json({
