@@ -1,5 +1,4 @@
 const Content = require('../models/contents-model');
-const { Mongoose } = require('mongoose');
 
 module.exports = {
     async createGif(req, res) {
