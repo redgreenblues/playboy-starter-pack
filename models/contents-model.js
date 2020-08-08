@@ -18,10 +18,19 @@ const ContentsSchema = new Schema(
             required: true
         },
         content: String,
-        caption: String,
+        caption: {
+            type: String,
+            default: ''
+        },
         comments: [subCommentSchema],
-        likes: Number,
-        hashtag: [String],
+        likes: {
+            type: Number,
+            default: 0
+        },
+        hashtag: [{
+            type: String,
+            default: ''
+        }],
         contentType: {
             type: String,
             required: true
