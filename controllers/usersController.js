@@ -22,7 +22,7 @@ module.exports = {
   register(req, res) {
     User.find({ username: req.body.username, email: req.body.email }, async (err, doc) => {
       if (err) throw err;
-      if (doc) res.status(400).send(doc);
+      if (doc) res.status(400).json({ data: doc });
       if (!doc) {
         try {
           const hashedPassword = await bcrypt.hash(req.body.password, 10);
